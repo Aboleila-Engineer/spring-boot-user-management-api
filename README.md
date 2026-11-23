@@ -2,8 +2,6 @@
 
 A Java 17 and Spring Boot portfolio project for user record management, with a small browser interface and a REST API. The original backend exercise has been reworked into a consistent controller, service and repository structure.
 
-![Desktop demo](docs/desktop.png)
-
 ## What it does
 
 - Create, list, read, rename and delete users.
@@ -22,7 +20,7 @@ Java 17 · Spring Boot 3.5.8 · Spring Web · Spring Data JPA · Jakarta Validat
 Install a JDK 17 or later. From this project folder:
 
 ```bash
-./mvnw spring-boot:run -Dspring-boot.run.profiles=demo
+sh ./mvnw spring-boot:run -Dspring-boot.run.profiles=demo
 ```
 
 Windows PowerShell:
@@ -41,7 +39,7 @@ Open `http://localhost:8080`. Demo mode uses an in-memory H2 database. All demo 
 4. Start with the `database` profile for a **disposable local database**:
 
 ```bash
-./mvnw spring-boot:run -Dspring-boot.run.profiles=database
+sh ./mvnw spring-boot:run -Dspring-boot.run.profiles=database
 ```
 
 The `database` profile uses `ddl-auto=update` to create/update tables for local development. The default profile uses `validate` instead. For a real deployment, add reviewed schema migrations, backups and a supported database-specific integration test setup. Do not point the demo at important data.
@@ -77,7 +75,7 @@ Validation failures have a `fields` map. Missing records return 404. Duplicate u
 ## Build and test
 
 ```bash
-./mvnw clean verify
+sh ./mvnw clean verify
 ```
 
 The integration suite uses H2 and MockMvc. It covers the main record lifecycle, validation, missing records and duplicate unique fields plus password hashing and response privacy. H2 tests do not prove behavior against MySQL; that database-specific check remains necessary before deployment.
